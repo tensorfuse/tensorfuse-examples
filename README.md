@@ -1,2 +1,2 @@
 # tensorfuse-examples
-List of popular open-source models deployed on AWS using Tensorfuse
+Guide for deploying popular open-source models on AWS using Tensorfuse
