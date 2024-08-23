@@ -8,7 +8,7 @@
 # tensorfuse-examples
 List of popular open-source models deployed on AWS using Tensorfuse. 
 
-You can run them directly on GPU instances or deploy using the `tensorkube` runtime. The models will be served as an API that will autoscale wrt the traffic you get. 
+You can run them directly on GPU instances or deploy using the `tensorkube` runtime. The model will be served as an API that will autoscale wrt the traffic you get. 
 
 # Usage
 Pre-requisite:
