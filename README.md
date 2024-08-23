@@ -1,5 +1,5 @@
 <p align="left">
-  <a href="[https://www.yourwebsite.com](https://tensorfuse.io/)">
+  <a href="https://tensorfuse.io/">
     <img src="assets/Logo_whitebg.png" alt="Logo" width="200"/>
   </a>
 </p>
