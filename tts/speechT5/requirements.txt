@@ -1,0 +1,7 @@
+torch
+transformers
+datasets
+fastapi
+uvicorn
+pydantic
+SentencePiece
