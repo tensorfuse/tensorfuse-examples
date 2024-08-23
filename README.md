@@ -30,5 +30,7 @@ Access the endpoint via:
 tensorkube list deployments
 ```
 
+**Note:** If you encounter issues during deployment, refer to the [detailed instructions](https://docs.tensorfuse.io/introduction) for that model in our documentation.
+
 # License
 MIT License
