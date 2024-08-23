@@ -29,3 +29,6 @@ Access the endpoint via:
 ```python
 tensorkube list deployments
 ```
+
+# License
+MIT License
