@@ -14,7 +14,7 @@ You can run them directly on GPU instances or deploy using the `tensorkube` runt
 
 # Usage
 Pre-requisite:
-1. You need to have aws-cli installed and configured on your local machine with admin access and `us-east-1` as the default region. Follow these steps to configure. 
+1. You need to have aws-cli installed and configured on your local machine with admin access and `us-east-1` as the default region. [Follow these steps](https://docs.tensorfuse.io/guides/aws_cli) to configure. 
 2. You need to have the quotas for the GPUs you are running. [Read about GPU quotas in AWS](https://tensorfuse.io/blog/increase-gpu-quota-on-aws-with-python-script) and how to apply for them.
 3. Install the tensorfuse python package by running `pip install tensorkube`. Then, configure the tensorkube K8S cluster on your cloud by running, `tensorkube configure`. [More details here](https://docs.tensorfuse.io/getting_started_tensorkube)
 
