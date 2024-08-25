@@ -5,6 +5,8 @@
 </p>
 
 
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
 # tensorfuse-examples
 List of popular open-source models deployed on AWS using Tensorfuse. 
 
