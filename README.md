@@ -1,4 +1,4 @@
-<p align="left">
+<p align="center">
   <a href="https://tensorfuse.io/">
     <img src="assets/Logo_whitebg.png" alt="Logo" width="200"/>
   </a>
