@@ -1,0 +1,10 @@
+gpus: 8
+gpu_type: h100
+secret:
+  - vllm-token
+min-scale: 1
+readiness:
+  httpGet:
+    path: /health
+    port: 80
+

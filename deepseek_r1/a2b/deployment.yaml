@@ -1,0 +1,9 @@
+gpus: 1
+gpu_type: a10g
+secret:
+  - vllm-token
+readiness:
+  httpGet:
+    path: /health
+    port: 80
+

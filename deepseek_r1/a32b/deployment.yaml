@@ -1,0 +1,9 @@
+gpus: 4
+gpu_type: l4
+secret:
+  - vllm-token
+readiness:
+  httpGet:
+    path: /health
+    port: 80
+
