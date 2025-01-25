@@ -18,4 +18,6 @@ ENTRYPOINT ["python3", "-m", "vllm.entrypoints.openai.api_server", \
            # Maximum number of tokens, this can lead to OOM errors if overestimated
            "--max-model-len", "4096", \
            # Port on which to run the vLLM server
-           "--port", "80"]
+           "--port", "80", \
+           # API key for authentication to the server stored in Tensorfuse secrets
+           "--api-key", "${VLLM_API_KEY}"]
