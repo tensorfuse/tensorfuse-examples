@@ -1,0 +1,7 @@
+gpus: 4
+gpu_type: l40s
+port: 8080
+readiness:
+    httpGet:
+        path: /health
+        port: 8080
