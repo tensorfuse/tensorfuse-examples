@@ -1,0 +1,19 @@
+name: "flux"
+backend: "python"
+max_batch_size: 0
+
+input [
+  {
+    name: "PROMPT"
+    data_type: TYPE_STRING
+    dims: [1]
+  }
+]
+
+output [
+  {
+    name: "GENERATED_IMAGE"
+    data_type: TYPE_UINT8
+    dims: [-1]
+  }
+]
