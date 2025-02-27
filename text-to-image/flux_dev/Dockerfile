@@ -22,10 +22,7 @@ COPY models/flux/config.pbtxt /models/flux/config.pbtxt
 
 
 # Set environment variables
-ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
-ENV TRITON_ENABLE_GPU=1
 ENV HF_HUB_ENABLE_HF_TRANSFER=1
-ENV HF_TOKEN=<HF_TOKEN>
 
 # Expose Triton gRPC and HTTP ports
 EXPOSE 8000
@@ -33,4 +30,4 @@ EXPOSE 8001
 EXPOSE 8002
 
 # Start Triton Server
-CMD ["tritonserver", "--model-repository=/models"]
+CMD ["tritonserver", "--model-repository=/models", "--allow-gpu-metrics=false", "--allow-metrics=false", "--metrics-port=0", "--http-restricted-api=inference:API_KEY=random" ] 
