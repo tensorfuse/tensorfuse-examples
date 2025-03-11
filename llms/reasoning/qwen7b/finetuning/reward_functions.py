@@ -36,7 +36,7 @@ def extract_hash_answer(text: str) -> str | None:
 
 # uncomment middle messages for 1-shot prompting
 def get_gsm8k_questions(split = "train") -> Dataset:
-    data = load_dataset(dataset, 'main')[split] # type: ignore
+    data = load_dataset(dataset_name, 'main')[split] # type: ignore
     data = data.map(lambda x: { # type: ignore
         'prompt': [
             {'role': 'system', 'content': SYSTEM_PROMPT},
