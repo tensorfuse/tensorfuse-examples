@@ -1,0 +1,8 @@
+gpus: 1
+gpu_type: l40s
+secret:
+  - huggingface
+readiness:
+  httpGet:
+    path: /health
+    port: 80
