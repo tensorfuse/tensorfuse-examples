@@ -4,6 +4,8 @@ import triton_python_backend_utils as pb_utils
 import torch
 import numpy as np
 import sys
+import base64
+import torchaudio
 
 class TritonPythonModel:
     def initialize(self, args):
@@ -46,12 +48,30 @@ class TritonPythonModel:
             context_data = context_tensor.as_numpy() # shape: (N,)
             max_size_data = max_size_tensor.as_numpy() # shape: (1,)
 
-            
             text_value = text_data[0]
             if isinstance(text_value, bytes):
                 text_value = text_value.decode("utf-8")
-            
+
             voice_value = int(voice_data[0])
+
+            context_list = []
+            for c in context_data:
+                context_item = json.loads(c.decode("utf-8") if isinstance(c, bytes) else str(c))
+                audio_tensor = context_item['audio']
+                sample_rate = context_item['original_sample_rate']
+                
+                
+                audio_bytes = base64.b64decode(audio_tensor)
+                audio_array = np.frombuffer(audio_bytes, dtype=np.float32)
+                audio = torch.from_numpy(audio_array)
+                audio = torchaudio.functional.resample(audio.squeeze(0), orig_freq=sample_rate, new_freq=self.generator.sample_rate)
+                
+                segment = Segment(
+                    text=context_item['text'],
+                    speaker=context_item['speaker'],
+                    audio=audio
+                )
+                context_list.append(segment)
 
             max_size_value = int(max_size_data[0])
 
@@ -60,7 +80,7 @@ class TritonPythonModel:
             audio = self.generator.generate(
                 text=text_value,
                 speaker=voice_value,
-                context=[],
+                context=context_list,
                 max_audio_length_ms=max_size_value
             )
             
