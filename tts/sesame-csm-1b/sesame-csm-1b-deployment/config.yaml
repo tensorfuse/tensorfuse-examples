@@ -1,0 +1,9 @@
+gpus: 1
+gpu_type: a10g
+port: 8000
+secret:
+ - hugging-face-secret
+readiness:
+  httpGet:
+    path: /v2/health/ready
+    port: 8000
