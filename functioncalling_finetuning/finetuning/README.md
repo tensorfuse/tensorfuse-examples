@@ -1,0 +1,11 @@
+```
+tensorkube job deploy --name qwen-ft-w --gpus 1 --gpu-type l40s --secret hugging-face-secret --secret wb-secret
+```
+
+```
+tensorkube secret create hugging-face-secret HUGGING_FACE_HUB_TOKEN=hf_na***** --env keda
+```
+
+```
+tensorkube secret create wb-secret WANDB_API_KEY=7c***** --env keda
+```

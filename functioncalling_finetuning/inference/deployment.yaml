@@ -1,0 +1,15 @@
+gpus: 1
+gpu_type: l40s
+secret:
+  - hugging-face-secret
+port: 80
+min_scale: 1
+max_scale: 1
+startup_probe:
+  httpGet:
+    path: /health
+    port: 80
+readiness:
+  httpGet:
+    path: /health
+    port: 80
