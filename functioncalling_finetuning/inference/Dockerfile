@@ -13,11 +13,6 @@ ENV VLLM_ALLOW_RUNTIME_LORA_UPDATING True
 
 ENV VLLM_USE_V1 1
 
-# ENV HF_HOME=/app/cache/huggingface
-# ENV HF_HUB_CACHE=/app/cache/huggingface/hub
-# ENV HF_DATASETS_CACHE=/app/cache/huggingface/datasets
-# ENV HF_ASSETS_CACHE=/app/cache/huggingface/assets
-
 # Expose port 80
 EXPOSE 80
 
