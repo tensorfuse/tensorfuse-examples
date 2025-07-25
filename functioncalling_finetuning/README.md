@@ -7,9 +7,7 @@ Welcome to the Tensorfuse x AWS Workshop! This guide will walk you through all t
 ## 🟢 Initial Setup on Tensorfuse
 
 1. **Log into Tensorfuse** - [Tensorfuse](https://app.tensorfuse.io)
-2. **Sign the Consent**
-   - This consent grants Tensorfuse access to configure base resources in your VPC.
-   - We'll review all the resources provisioned shortly.
+2. **Configure the Cluster**
 3. **Use AWS Identity Center**
    - Best practice for managing access securely.
 4. **Grant Control Plane Access**
@@ -123,20 +121,14 @@ Welcome to the Tensorfuse x AWS Workshop! This guide will walk you through all t
 
 31. Example command:  
    ```bash
-   tensorkube job deploy      --name qwen-finetuning      --gpus 1      --gpu-type l40s      --secret hugging-face-secret      --secret wb-secret
+   tensorkube job deploy --name qwen-finetuning --gpus 1 --gpu-type l40s --secret hugging-face-secret --secret wb-secret
    ```
 
 ### Queue a Training Run
 
 32. Submit your run with:
    ```bash
-   tensorkube job queue      --job-name qwen-finetuning      --job-id run-one      --payload '{
-       "hub_model_id": "samagra-tensorfuse/qwen-functioncalling",
-       "num_epochs": 1,
-       "learning_rate": 0.0002,
-       "wandb_project": "qwen-functioncalling",
-       "wandb_entity": "<YOUR_WANDB_ENTITY_HERE>"
-     }'
+   tensorkube job queue --job-name qwen-finetuning --job-id run-one --payload '{"hub_model_id":"<YOUR_HF_ACCOUNT>/qwen-functioncalling","num_epochs":1,"learning_rate":0.0002,"wandb_project":"qwen-functioncalling","wandb_entity":"<YOUR_WANDB_ENTITY_HERE>"}'
    ```
 
 33. Monitor progress via [Weights & Biases](https://wandb.ai/home) under the project name `qwen-functioncalling`.
