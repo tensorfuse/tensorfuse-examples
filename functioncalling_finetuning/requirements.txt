@@ -1,2 +1,4 @@
 tensorkube
 requests
+openai
+datasets

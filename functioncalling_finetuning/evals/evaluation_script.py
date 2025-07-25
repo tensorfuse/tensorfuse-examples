@@ -13,11 +13,13 @@ import time
 import requests
 
 API_KEY = 'test'
-BASE_URL = 'http://localhost:8001/v1'
+BASE_URL = '<YOUR_APP_URL>/v1'  # Adjust if using a different endpoint
 DEFAULT_MODELS = [
     "Qwen/Qwen3-8B",
     "qwen_v1"
 ]
+NUM_SAMPLES = 500
+NUM_COCNURRENT_INFERENCE_CALLS = 20
 
 def load_lora_adapter(lora_path):
     """Load a LoRA adapter using the API."""
@@ -130,29 +132,30 @@ def safe_parse_function_call(match_text):
 
 
 def load_hermes_dataset(max_samples=500):
-    """Load Hermes function calling dataset - simple version."""
-    
+    """Load Hermes function calling dataset (randomized version)."""
     print("Loading Hermes dataset...")
     dataset = load_dataset("NousResearch/hermes-function-calling-v1", "func_calling_singleturn")
-    print(dataset)
-    print(len(dataset))
-    print(len(dataset["train"]))
-    
+    train = dataset["train"]
+    num_total = len(train)
+    indices = list(range(num_total))
+
+    # Shuffle all indices
+    random.shuffle(indices)
+
     samples = []
-    for i, sample in enumerate(dataset["train"]):
-        if i >= max_samples:
-            break
-            
-        conversations = sample["conversations"]
+    for i in range(min(max_samples, num_total)):
+        idx = indices[i]
+        sample = train[idx]
+        
         system_prompt = ""
         user_query = ""
         expected_response = ""
         
-        for conv in conversations:
+        for conv in sample["conversations"]:
             if conv["from"] == "system":
                 system_prompt = conv["value"]
             elif conv["from"] == "human":
-                user_query = conv["value"] 
+                user_query = conv["value"]
             elif conv["from"] == "gpt":
                 expected_response = conv["value"]
         
@@ -472,7 +475,7 @@ async def main():
     total_start_time = time.time()
     
     # Load dataset
-    dataset = load_hermes_dataset(max_samples=500)
+    dataset = load_hermes_dataset(max_samples=NUM_SAMPLES)
     
     # Run benchmark asynchronously
     # Adjust max_concurrent based on your OpenAI tier:
@@ -486,7 +489,7 @@ async def main():
     # Calculate total time
     total_time = time.time() - total_start_time
     print(f"\nTotal benchmark time: {total_time:.2f} seconds")
-    print(f"Average time per model: {total_time/len(models_to_test):.2f} seconds")
+    print(f"Average time per model: {total_time/len(selected_models):.2f} seconds")
     
     # Show results
     print_final_results(results)
