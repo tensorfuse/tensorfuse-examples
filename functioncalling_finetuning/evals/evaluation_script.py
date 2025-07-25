@@ -13,7 +13,7 @@ import time
 import requests
 
 API_KEY = 'test'
-BASE_URL = 'http://ac931e8843a254d8495ee89943029edc-1068672296.us-east-1.elb.amazonaws.com/svc/default/inference-gpus-1-l40s/v1'  # Adjust if using a different endpoint
+BASE_URL = '<YOUR_APP_URL>/v1'  # Adjust if using a different endpoint
 DEFAULT_MODELS = [
     "Qwen/Qwen3-8B",
     "qwen_v1"
