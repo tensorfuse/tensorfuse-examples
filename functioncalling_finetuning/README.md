@@ -59,7 +59,7 @@ Welcome to the Tensorfuse x AWS Workshop! This guide will walk you through all t
 
 ---
 
-## 🧑‍💻 If Not Using Identity Center (Identity Center Recommended)
+## 🧑‍💻 If Not Using Identity Center (Prefer Identity center if possible)
 
 17. Follow this fallback method:
    1. Go to your AWS account → Click your account name → **Security Credentials**
